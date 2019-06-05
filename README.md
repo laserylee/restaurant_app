@@ -41,6 +41,7 @@ In this app, we will have 2 kind of users, which is customer and admin.
 		* will sms 5 min before pickup_time as reminder
 		* will sms if food havent get picked up after 5 min
 	* created_at
+	* order_history --> order_id
 2. Item
 	* id
 	* name
@@ -49,10 +50,27 @@ In this app, we will have 2 kind of users, which is customer and admin.
 	* availability
 		* string, will specify here when lack of stock
 3. Order
-	* order_details
+	* id
+	* order_list --> order_details
 	* order_at
 	* pickup time
 	* picked_up
-4. Order-details
+4. Order_details
 	* item id
 	* price
+
+# Controllers
+1. Static_pages
+	* Home
+	* About
+	* Help
+	* Contact
+2. Users
+	* new
+	* create
+	* show
+	* edit
+	* update
+	* destroy
+3. Sessions
+4. Orders
