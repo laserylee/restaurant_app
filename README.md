@@ -31,8 +31,8 @@ In this app, we will have 2 kind of users, which is customer and admin.
 	
 1. User
 	* id
-	* admin
-	* activated
+	* admin?
+	* activated?
 	* name
 	* email
 		* optional, notify customer inside page, for ads spam emais
@@ -46,17 +46,19 @@ In this app, we will have 2 kind of users, which is customer and admin.
 	* id
 	* name
 	* description
+  * category
 	* price
 	* availability
 		* string, will specify here when lack of stock
 3. Order
 	* id
 	* order_list --> order_details
-	* order_at
+	* order_time
 	* pickup time
-	* picked_up
+	* picked_up?
 4. Order_details
 	* item id
+  * quantity
 	* price
 
 # Controllers
@@ -86,16 +88,21 @@ In this app, we will have 2 kind of users, which is customer and admin.
 5. Account_activation
 	* edit -- link from email
 6. Password_resets
-	* new -- request page which require email of user
-	* create -- click request
-	* edit -- new pwd and confirm pwd
+	* new -- request page, confirmation through email or phone
+	* create -- send token
+	* edit -- get token, new pwd and confirm pwd
 	* update -- patch
 7. Email_resets
 	* new -- request page which require confirm old email and pwd, then new email
-	* create -- send token to new email
-	* edit -- new pwd and confirm pwd
+	* create -- send token
+	* edit -- get token and verify
 	* update --patch
-8. Items -- views in admin panel
+8. Phone_resets
+  * new -- request page which require old phone number, new phone number, and pwd
+  * create -- send token
+  * edit -- get token and verify
+  * update
+9. Items -- views in admin panel
 	* create
 	* update
 	* destroy
