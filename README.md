@@ -47,13 +47,12 @@ In this app, we will have 2 kind of users, which is customer and admin.
 	* description
 	* price
 	* availability
-		* normally nil, will specify when lack of stock
+		* string, will specify here when lack of stock
 3. Order
 	* order_details
 	* order_at
 	* pickup time
 	* picked_up
-  
 4. Order-details
 	* item id
 	* price
