@@ -96,8 +96,6 @@ In this app, we will have 2 kind of users, which is customer and admin.
 	* edit -- new pwd and confirm pwd
 	* update --patch
 8. Items -- views in admin panel
-	* new
 	* create
-	* edit
 	* update
 	* destroy
