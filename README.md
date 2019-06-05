@@ -35,24 +35,25 @@ In this app, we will have 2 kind of users, which is customer and admin.
 	* activated
 	* name
 	* email
-  		* optional, notify customer inside page, for ads spam emais
+		* optional, notify customer inside page, for ads spam emais
 	* hp_no
-    	* activate using sms, if cant use email to activate
-   	  * will sms 5 min before pickup_time as reminder
-   	  * will sms if food havent get picked up after 5 min
+		* activate using sms, if cant use email to activate
+		* will sms 5 min before pickup_time as reminder
+		* will sms if food havent get picked up after 5 min
 	* created_at
 2. Item
 	* id
 	* name
 	* description
 	* price
-  	* availability
-    	* normally nil, will specify when lack of stock
+	* availability
+	* normally nil, will specify when lack of stock
 3. Order
 	* order_details
 	* order_at
-  	* pickup time
+	* pickup time
+	* picked_up
   
 4. Order-details
-  	* item id
-  	* price
+	* item id
+	* price
