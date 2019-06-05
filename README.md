@@ -30,7 +30,7 @@ In this app, we will have 2 kind of users, which is customer and admin.
 # Models
 	
 1. User
-  * id
+	* id
 	* admin
 	* activated
 	* name
