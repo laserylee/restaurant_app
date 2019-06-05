@@ -73,7 +73,6 @@ In this app, we will have 2 kind of users, which is customer and admin.
 	* update
 	* destroy
 	* index -- only admin
-	* activate
 3. Sessions
 	* new
 	* create
@@ -83,3 +82,15 @@ In this app, we will have 2 kind of users, which is customer and admin.
 	* create
 	* show
 	* index --only admin
+5. Account_activation
+	* edit -- link from email
+6. Password_resets
+	* new -- request page which require email of user
+	* create -- click request
+	* edit -- new pwd and confirm pwd
+	* update -- patch
+7. Email_resets
+	* new -- request page which require confirm old email and pwd, then new email
+	* create -- send token to new email
+	* edit -- new pwd and confirm pwd
+	* update --patch
