@@ -94,3 +94,7 @@ In this app, we will have 2 kind of users, which is customer and admin.
 	* create -- send token to new email
 	* edit -- new pwd and confirm pwd
 	* update --patch
+8. Items
+	* index -- admin
+	* edit -- slit all edits and creates here?
+	* update -- patch
