@@ -72,5 +72,14 @@ In this app, we will have 2 kind of users, which is customer and admin.
 	* edit
 	* update
 	* destroy
+	* index -- only admin
+	* activate
 3. Sessions
+	* new
+	* create
+	* destroy
 4. Orders
+	* new -- to view cart and double confirm
+	* create
+	* show
+	* index --only admin
