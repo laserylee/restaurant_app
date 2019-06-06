@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations',
+    confirmations: 'users/confirmation' 
+  }, path_names: {
+    sign_in: 'login',
+    sign_out:'logout'
   }
 
   root 'static_pages#home'
