@@ -47,11 +47,13 @@ In this app, we will have 2 kind of users, which is customer and admin.
 	* name
 	* description
   * category
+  * picture
 	* price
 	* availability
 		* string, will specify here when lack of stock
 3. Order
 	* id
+  * confirmation_digest
 	* order_list --> order_details
 	* order_time
 	* pickup time
