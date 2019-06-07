@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RestaurantApp</title>
+    <title><%= yield(:title)%> | RestaurantApp</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,9 @@
   </head>
 
   <body>
-    <%= yield %>
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/flashmesj' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
   </body>
 </html>

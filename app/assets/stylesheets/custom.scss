@@ -1,0 +1,159 @@
+@import "bootstrap";
+
+/* mixin, variables */
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+
+/* universal */
+
+body {
+  padding-top: 0px;
+  font-family: Ubuntu;
+  background-color: #f7f7f7;
+}
+
+.center {
+    text-align: center;
+}
+.logo {
+  border: 1px solid #777777;
+  box-shadow: 2px 2px #000000;
+  &:hover {
+    border: 1px solid #888888;
+  }
+}
+
+.logo-button {
+  padding: 4px;
+  padding-top: 0px;
+  padding-left: 1px;
+  &:hover {
+    background-color: #888888;
+  }
+}
+
+.logo-special {
+  &:hover {
+    height: 240px;
+    width: 240px;
+  }
+}
+
+.headertitle {
+  @extend h1;
+  @extend .jumbotron;
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.big_plate {
+  background-color: #dddddd;
+}
+
+/* typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 0.5;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+}
+
+.desc {
+  font-size: 1em;
+  color: #444;
+}
+
+//
+// Main navbar
+//
+.nav-item {
+  padding-top: 0px;
+  &:hover {
+    background-color: #303030;
+  }
+}
+
+.nav-link {
+  &:hover {
+    color: #eeeeee;
+    text-shadow: 2px 4px black;
+  }
+}
+.dropdown-link {
+  @extend .nav-link;
+  font-size: 1em;
+  font-family: Ubuntu Mono;
+  color: #eeeeee;
+  &:hover {
+    color: white;
+    text-shadow: 0px 2px black;
+  }
+}
+
+.active {
+  text-shadow: 1px 2px black;
+}
+
+/* footer */
+.footlink {
+  font-size: 0.8em;
+  color: #888888;
+  &:hover {
+    color: #777777;
+    font-weight: bold;
+  }
+}
+
+footer {
+  border-top: 1px solid #888888;
+}
+
+/* form */
+
+input, textarea, select .uneditable_input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 2px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+  }
+}
+
+.field_with_errors {
+  .form-control {
+    border-color: red;
+  }
+}
+
+.btn {
+  margin-top: 15px;
+}
+
+.actions {
+  margin-top: 15px;
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}

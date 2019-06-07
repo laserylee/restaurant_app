@@ -1,0 +1,25 @@
+<header class="navbar navbar-dark navbar-expand bg-dark flex-column flex-md-row sticky-top">
+  <%= link_to image_tag("noo.png", alt:"Noo logo", size:"30x30", class:"rounded logo"),root_url, class:"navbar-brand logo-button rounded" %>
+    <div class="navbar-nav-scroll">
+    <ul class="navbar-nav flex-row">
+      <li class="nav-item rounded <%= activeProvide(root_path)   %>"><%= link_to "Home",    root_path,    class:"nav-link"%></li>
+      <li class="nav-item rounded <%= activeProvide(help_path)   %>"><%= link_to "Help",    help_path,    class:"nav-link"%></li>
+      <li class="nav-item rounded <%= activeProvide(about_path)  %>"><%= link_to "About",   about_path,   class:"nav-link"%></li>
+    </ul>
+    </div>
+    <ul class="navbar-nav flex-row ml-md-auto">
+    <% if user_signed_in? %>
+    <li class="dropdown nav-item rounded">
+      <a href="#" class="dropdown-toggle dropdown-link" data-toggle="dropdown">account<b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu bg-dark">
+        <li class="nav-item"><%= link_to "profile", user_session_path , class:"dropdown-link"%></li>
+        <li class="nav-item"><%= link_to "settings", edit_user_registration_path, class:"dropdown-link"%></li>
+        <li class="divider"></li>
+        <li class="nav-item"><%= link_to "log out", destroy_user_session_path , method: :delete, class:"dropdown-link"%></li>
+      </li>
+     <% else %>
+       <li class="nav-item rounded <%= activeProvide(new_user_session_path)%>"><%= link_to "Log in", new_user_session_path, class:"nav-link" %></li>
+   <% end %>
+   </ul>
+</header>

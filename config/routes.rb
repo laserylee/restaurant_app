@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     sessions:      'users/sessions',
     passwords:     'users/passwords',
     registrations: 'users/registrations',
-    confirmations: 'users/confirmation' 
+    confirmations: 'users/confirmations' 
   }, path_names: {
     sign_in: 'login',
     sign_out:'logout',
