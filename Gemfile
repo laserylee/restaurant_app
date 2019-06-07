@@ -17,7 +17,6 @@ gem 'turbolinks', '~> 5'                                        # Turbolinks mak
 gem 'jbuilder', '~> 2.5'                                        # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'bcrypt', '~> 3.1.7'                                        # Use ActiveModel has_secure_password
 gem 'bootstrap', '~> 4.3.1'
-gem "bootstrap-sass", ">= 3.4.1"
 gem 'bootstrap-will_paginate'
 gem 'carrierwave'                                               # Upload stuff
 gem 'mini_magick'                                               # Edit picture

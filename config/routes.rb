@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmation' 
   }, path_names: {
     sign_in: 'login',
-    sign_out:'logout'
+    sign_out:'logout',
+    sign_up: 'signup'
   }
 
   root 'static_pages#home'
