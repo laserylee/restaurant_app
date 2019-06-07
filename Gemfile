@@ -21,6 +21,7 @@ gem 'bootstrap-will_paginate'
 gem 'carrierwave'                                               # Upload stuff
 gem 'mini_magick'                                               # Edit picture
 gem 'devise'                                                    # Authentication
+gem 'faker'                                                     # Faker~
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
