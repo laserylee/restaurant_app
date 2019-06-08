@@ -15,6 +15,9 @@
       <ul class="dropdown-menu bg-dark">
         <li class="nav-item"><%= link_to "profile", user_session_path , class:"dropdown-link"%></li>
         <li class="nav-item"><%= link_to "settings", edit_user_registration_path, class:"dropdown-link"%></li>
+        <% if current_user.admin %>
+          <li class="nav-item"><%= link_to "admin panel", adminpanel_path, class:"dropdown-link"%></li>
+        <% end %>
         <li class="divider"></li>
         <li class="nav-item"><%= link_to "log out", destroy_user_session_path , method: :delete, class:"dropdown-link"%></li>
       </li>
