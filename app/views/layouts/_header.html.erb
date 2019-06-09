@@ -12,7 +12,7 @@
     <li class="dropdown nav-item rounded">
       <a href="#" class="dropdown-toggle dropdown-link" data-toggle="dropdown">account<b class="caret"></b>
       </a>
-      <ul class="dropdown-menu bg-dark">
+      <ul class="dropdown-menu bg-dark" style="z-index: 5;">
         <li class="nav-item"><%= link_to "profile", user_session_path , class:"dropdown-link"%></li>
         <li class="nav-item"><%= link_to "settings", edit_user_registration_path, class:"dropdown-link"%></li>
         <% if current_user.admin %>

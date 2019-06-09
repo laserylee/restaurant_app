@@ -115,6 +115,13 @@ footer {
   border-top: 1px solid #888888;
 }
 
+.mini-nav {
+  @extend .navbar;
+  @extend .navbar-dark;
+  @extend .navbar-expand;
+  background-color: #121212;
+}
+
 /* form */
 
 input, textarea, select .uneditable_input {
