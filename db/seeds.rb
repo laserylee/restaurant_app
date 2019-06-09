@@ -12,6 +12,21 @@ User.create!(name: "Admin",
              password_confirmation: "1;r2;r3;r777",
              admin: true,
              confirmed_at: Time.zone.now)
+array = []
+10.times do |n|
+  array << Faker::Ancient.god
+end
+
+99.times do |n|
+  name = Faker::Food.dish
+  category = array.shuffle.first
+  description = Faker::Food.description
+  price = rand(100)
+  Item.create!(name: name,
+               description: description,
+               category:category,
+               price: price)
+end
 
 # 99.times do |n|
 #  name = Faker::Name.name

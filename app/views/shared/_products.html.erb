@@ -1,0 +1,36 @@
+  <% @array = allCategory(Item) %>
+    <nav id ="navexample" class="navbar navbar-dark  navbar-expand bg-dark sticky-top">
+      <ul class="navbar-nav flex-row">
+      <% @array.each do |f| %>
+        <li class="nav-item rounded">
+          <a class="nav-link" href="#<%= f %>"><%= f %></a>
+        </li>
+      <% end %>
+      </ul>
+    </nav>
+
+    <div data-spy="scroll" data-target="#navexample" >
+    <% @array.each do |f| %>
+        <div class="headertitle"><%= f %></div>
+      <div class="jumbotron flex-column category-card" id="<%= f %>">
+        <div class="card-group flex-row">
+        <% @products = Item.where(category:f) %>
+        <% @products.each_with_index do |k,i| %>
+          <div class="card" style="max-width: 14em;">
+            <%= image_tag("noo.png", class:"card-img-top",alt:"#{k}") %>
+            <div class="card-body">
+              <p class="card-text"><b> <%= k.name %></b> </p>
+              <p class="card-text"> <%= k.description.to_s %> </p>
+              <a href="#" class="btn btn-primary">Add to cart</a>
+            </div>
+          </div>
+          <% if (i+1)%5 == 0 %>
+            </div><div class="card-group flex-row">
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
