@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+include ApplicationHelper
+
   def home
   end
 
@@ -12,5 +14,7 @@ class StaticPagesController < ApplicationController
   end
 
   def adminpanel
+    redirectNonAdmin
   end
+
 end
