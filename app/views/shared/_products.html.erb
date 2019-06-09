@@ -9,9 +9,9 @@
       </ul>
     </nav>
 
-    <div data-spy="scroll" data-target="#navexample" >
+    <div>
     <% @array.each do |f| %>
-        <div class="headertitle pb-0"><%= f %></div>
+      <div class="headertitle pb-0"><%= f %></div>
       <div class="jumbotron flex-column category-card" id="<%= f %>">
         <div class="card-group flex-row pb-3">
         <% @products = Item.where(category:f) %>
@@ -19,7 +19,7 @@
           <div class="card" style="max-width: 14em;">
             <%= image_tag("noo.png", class:"card-img-top",alt:"#{k}") %>
             <div class="card-body">
-              <p class="card-text"><b> <%= k.name %></b> </p>
+              <p class="card-text mb-1"><b> <%= k.name %></b> </p>
               <p class="card-text"> <%= k.description.to_s %> </p>
             </div>
             <div class="card-footer pt-0"><a href="#" class="btn btn-primary">Add to cart</a></div>
