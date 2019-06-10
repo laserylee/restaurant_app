@@ -11,8 +11,12 @@
         <div class="card-group flex-row pb-3">
         <% @products = Item.where(category:f) %>
         <% @products.each_with_index do |k,i| %>
-          <div class="card" style="max-width: 12em;">
-            <%= image_tag("noo.png", class:"card-img-top",alt:"#{k}") %>
+          <div class="card" style="max-width: 210px;">
+            <% if k.picture? %>
+              <%= image_tag(k.picture.url, size:"210", alt:"#{k}")%>
+            <% else %>
+              <%= image_tag("noo.png", class:"card-img-top",alt:"#{k}") %>
+            <% end %>
             <div class="card-body">
               <p class="card-text mb-1"><b> <%= k.name %></b> </p>
               <p class="card-text"> <%= k.description.to_s %> </p>

@@ -2,7 +2,8 @@
 
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    <%= form_for(@item, ) do |f| %>
+    <%= image_tag @item.picture.url, size:"400x400", class:"logo mb-3 mt-3" if @item.picture?%>
+    <%= form_for(@item) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :name %>
@@ -16,6 +17,10 @@
 
       <%= f.label :price %>
       <%= f.number_field :price, class:'form-control', step:'0.01', placeholder:"#{@item.price}"%>
+      
+      <span class="picture">
+        <%= f.file_field :picture %>
+      </span>
 
       <%= f.submit "Update item", class:"btn btn-primary" %>
 

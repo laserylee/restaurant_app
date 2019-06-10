@@ -16,8 +16,7 @@ class Item < ApplicationRecord
     :price,
     numericality: true,
     presence: true )
-
-
+  mount_uploader :picture, PictureUploader
 
 
 end

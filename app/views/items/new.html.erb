@@ -17,6 +17,10 @@
       <%= f.label :price %>
       <%= f.number_field :price, class:'form-control', step:'0.01' %>
 
+      <span class="picture">
+        <%= f.file_field :picture %>
+      </span>
+
       <%= f.submit "Create item", class:"btn btn-primary" %>
 
     <% end %>
