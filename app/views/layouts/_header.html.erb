@@ -2,9 +2,9 @@
   <%= link_to image_tag("noo.png", alt:"Noo logo", size:"30x30", class:"rounded logo"),root_url, class:"navbar-brand logo-button rounded" %>
     <div class="navbar-nav-scroll">
     <ul class="navbar-nav flex-row">
-      <li class="nav-item1 rounded <%= activeProvide(root_path)   %>"><%= link_to "Home",    root_path,    class:"nav-link1"%></li>
-      <li class="nav-item1 rounded <%= activeProvide(help_path)   %>"><%= link_to "Help",    help_path,    class:"nav-link1"%></li>
-      <li class="nav-item1 rounded <%= activeProvide(about_path)  %>"><%= link_to "About",   about_path,   class:"nav-link1"%></li>
+      <li class="nav-item rounded <%= activeProvide(root_path)   %>"><%= link_to "Home",    root_path,    class:"nav-link"%></li>
+      <li class="nav-item rounded <%= activeProvide(help_path)   %>"><%= link_to "Help",    help_path,    class:"nav-link"%></li>
+      <li class="nav-item rounded <%= activeProvide(about_path)  %>"><%= link_to "About",   about_path,   class:"nav-link"%></li>
         <%= render "shared/adminnav" %>
     </ul>
     </div>
