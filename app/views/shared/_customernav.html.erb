@@ -1,0 +1,10 @@
+<% @array = allCategory(Item) %>
+  <nav id ="navcustomer" class="navbar navbar-dark  navbar-expand bg-dark sticky-top">
+    <ul class="navbar-nav flex-row">
+      <% @array.each do |f| %>
+        <li class="nav-item rounded">
+          <a class="nav-link" href="#<%= f %>"><%= f %></a>
+        </li>
+      <% end %>
+    </ul>
+  </nav>

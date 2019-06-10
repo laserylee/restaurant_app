@@ -1,0 +1,29 @@
+<% provide(:title, "Items(Id)" ) %>
+<% @products = Item.all %>
+
+<div class="headertitle pt-5" id="byId">Item List By ID</div>
+<div class="col-md-10 offset-md-1">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th>Picture</th>
+    <th>Price</th>
+  </thead>
+  <tbody>
+  <% @products.each do |f| %>
+    <tr>
+    <th><%= f.id %></th>
+    <th><%= f.name %></th>
+    <th><%= f.description %></th>
+    <th><%= f.category %></th>
+    <th><%= f.picture %></th>
+    <th><%= f.price %></th>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>

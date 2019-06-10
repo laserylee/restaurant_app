@@ -2,24 +2,22 @@
   <%= link_to image_tag("noo.png", alt:"Noo logo", size:"30x30", class:"rounded logo"),root_url, class:"navbar-brand logo-button rounded" %>
     <div class="navbar-nav-scroll">
     <ul class="navbar-nav flex-row">
-      <li class="nav-item rounded <%= activeProvide(root_path)   %>"><%= link_to "Home",    root_path,    class:"nav-link"%></li>
-      <li class="nav-item rounded <%= activeProvide(help_path)   %>"><%= link_to "Help",    help_path,    class:"nav-link"%></li>
-      <li class="nav-item rounded <%= activeProvide(about_path)  %>"><%= link_to "About",   about_path,   class:"nav-link"%></li>
+      <li class="nav-item1 rounded <%= activeProvide(root_path)   %>"><%= link_to "Home",    root_path,    class:"nav-link1"%></li>
+      <li class="nav-item1 rounded <%= activeProvide(help_path)   %>"><%= link_to "Help",    help_path,    class:"nav-link1"%></li>
+      <li class="nav-item1 rounded <%= activeProvide(about_path)  %>"><%= link_to "About",   about_path,   class:"nav-link1"%></li>
+        <%= render "shared/adminnav" %>
     </ul>
     </div>
-    <ul class="navbar-nav flex-row ml-md-auto">
+    <ul class="navbar-nav flex-row">
     <% if user_signed_in? %>
-    <li class="dropdown nav-item rounded">
+    <li class="dropdown nav-item1 rounded">
       <a href="#" class="dropdown-toggle dropdown-link" data-toggle="dropdown">account<b class="caret"></b>
       </a>
-      <ul class="dropdown-menu bg-dark" style="z-index: 5;">
-        <li class="nav-item"><%= link_to "profile", user_session_path , class:"dropdown-link"%></li>
-        <li class="nav-item"><%= link_to "settings", edit_user_registration_path, class:"dropdown-link"%></li>
-        <% if current_user.admin %>
-          <li class="nav-item"><%= link_to "admin panel", adminpanel_path, class:"dropdown-link"%></li>
-        <% end %>
+      <ul class="dropdown-menu bg-dark">
+        <li class="nav-item1"><%= link_to "profile", user_session_path , class:"dropdown-link"%></li>
+        <li class="nav-item1"><%= link_to "settings", edit_user_registration_path, class:"dropdown-link"%></li>
         <li class="divider"></li>
-        <li class="nav-item"><%= link_to "log out", destroy_user_session_path , method: :delete, class:"dropdown-link"%></li>
+        <li class="nav-item1"><%= link_to "log out", destroy_user_session_path , method: :delete, class:"dropdown-link"%></li>
       </li>
      <% else %>
        <li class="nav-item rounded <%= activeProvide(new_user_session_path)%>"><%= link_to "Log in", new_user_session_path, class:"nav-link" %></li>
