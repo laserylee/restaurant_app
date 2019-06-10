@@ -1,21 +1,28 @@
 <% provide(:title, "Items(Id)" ) %>
 <% @products = Item.all %>
+<% @array = allCategory(Item) %>
+<% @colors = ["secondary","success","danger","warning","light","primary"] %>
+<% #@array.each_with_index do |k,i| %>
+  <% #@colors[i%7] %>
+<% #end %>
 
 <div class="headertitle pt-5" id="byId">Item List By ID</div>
-<div class="col-md-12 offset-md-0">
+<div class="col-md-12 offset-md-0 bg-dark">
 <table class="table table-hover table-bordered", style="font-family: Arial;">
   <thead>
-    <tr>
+    <tr class="table-primary">
     <th>Id</th>
     <th>Name</th>
     <th>Description</th>
     <th>Category</th>
     <th>Picture</th>
     <th>Price</th>
+    <th>Edit</th>
+    <th>Del</th>
   </thead>
   <tbody>
   <% @products.each do |f| %>
-    <tr>
+    <tr class="table-<%= @colors[@array.index("#{f.category}")%6] %>">
     <th><%= f.id %></th>
     <th><%= f.name %></th>
     <th><%= f.description %></th>

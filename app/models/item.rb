@@ -11,7 +11,6 @@ class Item < ApplicationRecord
   validates(
     :category,
     presence: true,
-    uniqueness: true,
     length: { minimum:3, maximum:20 } )
   validates(
     :price,
