@@ -2,8 +2,8 @@
 <% @products = Item.all %>
 
 <div class="headertitle pt-5" id="byId">Item List By ID</div>
-<div class="col-md-10 offset-md-1">
-<table class="table table-bordered">
+<div class="col-md-12 offset-md-0">
+<table class="table table-hover table-bordered", style="font-family: Arial;">
   <thead>
     <tr>
     <th>Id</th>
@@ -22,6 +22,8 @@
     <th><%= f.category %></th>
     <th><%= f.picture %></th>
     <th><%= f.price %></th>
+    <th><%= link_to "Edit", edit_item_path(f)%></th>
+    <th><%= link_to "Del", f , method: :delete, data: { confirm: "Are you sure to delete #{f.name}?" } %></th>
     </tr>
   <% end %>
   </tbody>

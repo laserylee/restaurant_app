@@ -1,0 +1,24 @@
+<% provide(:title, 'Edit item') %>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <%= form_for(@item, ) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class:'form-control', placeholder:"#{@item.name}"%>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, class:'form-control', placeholder:"#{@item.description}"%>
+
+      <%= f.label :category %>
+      <%= f.text_field :category, class:'form-control', autocomplete:"on", placeholder:"#{@item.category}"%>
+
+      <%= f.label :price %>
+      <%= f.number_field :price, class:'form-control', step:'0.01', placeholder:"#{@item.price}"%>
+
+      <%= f.submit "Update item", class:"btn btn-primary" %>
+
+    <% end %>
+  </div>
+</div>
