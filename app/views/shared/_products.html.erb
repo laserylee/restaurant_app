@@ -22,10 +22,16 @@
               <p class="card-text"> <%= k.description.to_s %> </p>
             </div>
             <div class="card-footer pt-0">
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#itemModal">
-                  Add to cart
-              </button>
+              <%= form_for order_item, remote: true do |f| %>
+      					<p class="text-right">Unit Price: <span style="color: green"><%= number_to_currency k.price %></span></p>
+        					<div class="input-group">
+          					<%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+          					<div class="input-group-btn">
+            					<%= f.hidden_field :item_id, value: k.id %>
+            					<%= f.submit "Add to Cart", class: "btn btn-primary" %>
+          				</div>
+        				</div>
+      				<% end %>
             </div>
           </div>
           <% if (i+1)%5 == 0 %>
@@ -45,6 +51,7 @@
           <a class="nav-link" href="#<%= f %>"><%= f %></a>
         </li>
       <% end %>
+    <p><%= render 'layouts/cart_text' %></h1>
     </ul>
   </nav>
   </div>

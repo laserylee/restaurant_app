@@ -12,21 +12,30 @@ User.create!(name: "Admin",
              password_confirmation: "1;r2;r3;r777",
              admin: true,
              confirmed_at: Time.zone.now)
+
 array = []
 10.times do |n|
   array << Faker::Ancient.god
 end
 
-99.times do |n|
-  name = Faker::Food.dish
+30.times do |n|
+  name = Faker::Name.name
   category = array.shuffle.first
   description = Faker::Food.description
   price = rand(100)
   Item.create!(name: name,
                description: description,
                category:category,
-               price: price)
+               price: price,
+               active: true)
 end
+
+
+OrderStatus.delete_all
+OrderStatus.create! id: 1, name: "In Progress"
+OrderStatus.create! id: 2, name: "Placed"
+OrderStatus.create! id: 3, name: "Shipped"
+OrderStatus.create! id: 4, name: "Cancelled"
 
 # 99.times do |n|
 #  name = Faker::Name.name
