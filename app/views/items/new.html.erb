@@ -1,2 +1,28 @@
-<% provide(:title, New Item) %>
+<% provide(:title, 'New Item') %>
 
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <%= form_for(@item) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class:'form-control' %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, class:'form-control'%>
+
+      <%= f.label :category %>
+      <%= f.text_field :category, class:'form-control', autocomplete:"on"%>
+
+      <%= f.label :price %>
+      <%= f.number_field :price, class:'form-control', step:'0.01' %>
+
+      <span class="picture">
+        <%= f.file_field :picture %>
+      </span>
+
+      <%= f.submit "Create item", class:"btn btn-primary" %>
+
+    <% end %>
+  </div>
+</div>
