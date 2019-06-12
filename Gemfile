@@ -22,8 +22,9 @@ gem 'carrierwave'                                               # Upload stuff
 gem 'mini_magick'                                               # Edit picture
 gem 'devise'                                                    # Authentication
 gem 'faker'                                                     # Faker~
-gem 'momentjs-rails', '~> 2.9',          github:'derekprior/momentjs-rails'
-gem 'datetimepicker-rails',              github:'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'simple_form'
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 
 # See https://github.com/rails/execjs#readme for more supported runtimes

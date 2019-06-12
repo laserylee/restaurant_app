@@ -10,6 +10,20 @@ class OrdersController < ApplicationController
   def show
   end
 
+  def new
+  end
+
+  def create
+    @order = current_order
+    byebug
+    @order.pickup_time = Time.zone.now + params[:pickup_time][:pickup_time].minutes
+    if @order.save
+      byebug
+    else
+      byebug
+    end
+  end
+
   def edit
     @order = Order.find(params[:id])
   end
@@ -27,5 +41,9 @@ class OrdersController < ApplicationController
       flash[:notice] = "Please sign in first."
       redirect_to new_user_session_path
     end
+  end
+
+  def order_params
+    params.permit(:pickup_time)
   end
 end
