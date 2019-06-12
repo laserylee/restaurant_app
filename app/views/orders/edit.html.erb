@@ -1,0 +1,16 @@
+<% provide(:title, "Confirm Order") %>
+<h1 class="headertitle">Confirm Order</h1>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <%= simple_form_for(@order) do |f| %>
+
+      <% render "devise/shared/error_messages", resource: @order %>
+
+      <%= f.input :pickup_time, as: :datetime_picker, wrapper: :ranged_datetime %>
+
+      <%= f.button :submit %>
+
+    <% end %>
+  </div>
+</div>
