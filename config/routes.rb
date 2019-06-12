@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'order_items/update'
   get 'order_items/destroy'
   get 'carts/show'
+
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
 
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
+  resources :orders
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
