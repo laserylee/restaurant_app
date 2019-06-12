@@ -20,6 +20,9 @@
   <% @order_items.each do |f| %>
     <% @total += f.total_price %>
   <% end %>
-   <h2 class="text-right mt-3"> TOTAL : <%= sprintf("RM%.2f", @total) %></h2>
+  <div class="col-md-4 offset-md-8 pt-4 pl-0  mt-3 border-dark border-top text-right">
+    <h2>TOTAL : <%= sprintf("RM%.2f", @total) %></h2>
+    <%= link_to "Confirm Pick-Up Time !", edit_order_path(current_order), class:'btn btn-primary' %>
+  </div>
   </div>
 <% end %>
