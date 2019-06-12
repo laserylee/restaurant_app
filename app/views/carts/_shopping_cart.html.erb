@@ -12,7 +12,14 @@
     There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
   </p>
 <% else %>
+  <div class="col-md-10 offset-md-1 mt-md-5 mb-3">
   <% @order_items.each do |order_item| %>
     <%= render 'carts/cart_row', item: order_item.item, order_item: order_item, show_total: true %>
   <% end %>
+  <% @total = 0 %>
+  <% @order_items.each do |f| %>
+    <% @total += f.total_price %>
+  <% end %>
+   <h2 class="text-right mt-3"> TOTAL : <%= sprintf("RM%.2f", @total) %></h2>
+  </div>
 <% end %>

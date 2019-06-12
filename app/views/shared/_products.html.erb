@@ -23,7 +23,7 @@
             </div>
             <div class="card-footer pt-0">
               <%= form_for order_item, remote: true do |f| %>
-      					<p class="text-right">Unit Price: <span style="color: green"><%= number_to_currency k.price %></span></p>
+      					<p class="text-right">Unit Price: <span style="color: green"><%= sprintf("RM%.2f", k.price) %></span></p>
         					<div class="input-group">
           					<%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
           					<div class="input-group-btn">
@@ -51,7 +51,7 @@
           <a class="nav-link" href="#<%= f %>"><%= f %></a>
         </li>
       <% end %>
-    <p><%= render 'layouts/cart_text' %></h1>
+    <p id="cart-text"><%= render 'layouts/cart_text' %></p>
     </ul>
   </nav>
   </div>

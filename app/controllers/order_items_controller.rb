@@ -1,6 +1,7 @@
 class OrderItemsController < ApplicationController
   def create
     @order = current_order
+    @order.order_status_id = 1
     @order_item = @order.order_items.new(order_item_params)
     @order.save
     session[:order_id] = @order.id

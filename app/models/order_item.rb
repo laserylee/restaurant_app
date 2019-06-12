@@ -30,7 +30,7 @@ class OrderItem < ApplicationRecord
 
   def order_present
     if order.nil?
-      erros.add(:order, "is not a valid order")
+      errors.add(:order, "is not a valid order")
     end
   end
 
