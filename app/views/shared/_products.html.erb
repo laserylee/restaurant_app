@@ -4,11 +4,11 @@
 
   <div class="row">
 
-    <div class="col-md-10 col-sm-7">
+    <div class="col-md-10 col-s">
     <% @array.each do |f| %>
       <div class="headertitle" style="padding-top:100px;font-size:4em;" id="<%= f %>"><%= f %></div>
       <div class="jumbotron flex-column category-card">
-        <div class="card-group flex-row pb-3">
+        <div class="card-group flex-md-row flex-sm-column pb-md-3">
         <% @products = Item.where(category:f) %>
         <% @products.each_with_index do |k,i| %>
           <div class="card" style="max-width: 210px;">
@@ -35,7 +35,7 @@
             </div>
           </div>
           <% if (i+1)%5 == 0 %>
-            </div><div class="card-group flex-row">
+            </div><div class="card-group flex-md-row flex-sm-column">
           <% end %>
         <% end %>
         </div>
@@ -44,7 +44,7 @@
   </div>
 
   <div class="col-md-2 col-sm-5" style="background-color: #777777;">
-  <nav id ="navcustomer" class="navbar navbar-light  navbar-expand bg-light rounded sticky-top">
+  <nav id ="navcustomer" class="navbar navbar-light  navbar-expand bg-light rounded sticky-top" style="top:55px;">
     <ul class="navbar-nav flex-column">
       <% @array.each do |f| %>
         <li class="nav-item rounded">
