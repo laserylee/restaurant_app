@@ -12,7 +12,7 @@
     There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
   </p>
 <% else %>
-  <div class="col-md-10 offset-md-1 mt-5 mb-3">
+  <div class="col-md-11 offset-md-1 mt-5 mb-3">
   <% @order_items.each do |order_item| %>
     <%= render 'carts/cart_row', item: order_item.item, order_item: order_item, show_total: true %>
   <% end %>
@@ -20,7 +20,7 @@
   <% @order_items.each do |f| %>
     <% @total += f.total_price %>
   <% end %>
-  <div class="col-md-4 offset-md-8 pt-4 pl-0  mt-3 border-dark border-top text-right">
+  <div class="col-md-4 offset-md-7 pt-4 pl-0  mt-3 border-dark border-top text-right">
     <h2>TOTAL : <%= sprintf("RM%.2f", @total) %></h2>
     <%= link_to "Confirm Pick-Up Time !", edit_order_path(current_order), class:'btn btn-primary' %>
   </div>

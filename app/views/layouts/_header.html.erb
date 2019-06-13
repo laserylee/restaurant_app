@@ -14,7 +14,7 @@
       <a href="#" class="dropdown-toggle dropdown-link" data-toggle="dropdown">account<b class="caret"></b>
       </a>
       <ul class="dropdown-menu bg-dark">
-        <li class="nav-item1"><%= link_to "profile", user_session_path , class:"dropdown-link"%></li>
+        <li class="nav-item1"><%= link_to "profile", user_path(current_user) , class:"dropdown-link"%></l
         <li class="nav-item1"><%= link_to "settings", edit_user_registration_path, class:"dropdown-link"%></li>
         <li class="divider"></li>
         <li class="nav-item1"><%= link_to "log out", destroy_user_session_path , method: :delete, class:"dropdown-link"%></li>

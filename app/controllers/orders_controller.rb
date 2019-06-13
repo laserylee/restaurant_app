@@ -8,6 +8,12 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    unless @order.user_id == current_user.id || current_user.admin
+      byebug
+      flash[:notice] = "This is not your order"
+      redirect_to root_url
+    end
   end
 
   def edit
@@ -26,10 +32,14 @@ class OrdersController < ApplicationController
       @order.pickup_time = @pickup_time
       @order.order_status_id = 2
       @order.user_id = current_user.id
+      @order.order_code = SecureRandom.urlsafe_base64
       @order.save!
       session[:order_id] = nil
-    end 
-    byebug
+      redirect_to order_path(@order)
+    else
+      flash[:notice] = "Please choose a time which is at least 1 hour later than this order"
+      render 'edit'
+    end
   end
 
   def destroy
@@ -41,4 +51,5 @@ class OrdersController < ApplicationController
       redirect_to new_user_session_path
     end
   end
+
 end

@@ -1,0 +1,36 @@
+<% provide(:title, "Profile") %>
+
+<div class="headertitle">User Profile</div>
+<h4 class="center mt-3"><%= current_user.name %></h4>
+<% @user_orders = current_user.orders %>
+
+
+<h4 class="center mt-5 mb-3">Orders</h4>
+<% unless @user_orders == [] %>
+  <% @ordered_orders = @user_orders.where(order_status_id:2) %>
+  <% @picked_up_orders = @user_orders.where(order_status_id:3) %>
+  <% @cancelled_orders = @user_orders.where(order_status_id:4) %>
+  <% @abandoned_orders = @user_orders.where(order_status_id:5) %>
+    <table class="table table-hover table-bordered col-md-10 offset-md-1">
+      <thead>
+      <tr>
+        <th>Order Code</th>
+        <th>Items</th>
+        <th>Total</th>
+        <th>Pickup Time</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+  <% @user_orders.each do |f| %>
+      <tr>
+        <th><%= f.order_code %></th>
+        <th><ul><% f.order_items.each do |k| %><li><%= k.item.name %> <%= k.quantity %> </li><% end %></ul></th>
+        <th><%= f.subtotal %></th>
+        <th><%= f.pickup_time %></th>
+        <th><%= f.order_status.name %></th>
+      </tr>
+  <% end %>
+    </table>
+<% else %>
+  <p class="mt-3 center">Unfortunately you havent any orders yet. <%= link_to "Order now !!", root_path %></p>
+<% end %>
