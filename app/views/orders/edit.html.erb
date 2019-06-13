@@ -3,6 +3,7 @@
 
 <div class="row">
   <div class="col-md-6 offset-md-3">
+    <h5 class="mt-4 mb-5">Dear <%= current_user.name %>,</h5>
     <%= form_for(@order) do |f| %>
 
       <%= render "devise/shared/error_messages", resource: @order %>

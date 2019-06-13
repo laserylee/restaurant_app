@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
     if @pickup_time > (Time.now + 1.hours)
       @order.pickup_time = @pickup_time
       @order.order_status_id = 2
+      @order.user_id = current_user.id
       @order.save!
       session[:order_id] = nil
     end 
