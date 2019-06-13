@@ -7,10 +7,11 @@
 
       <%= render "devise/shared/error_messages", resource: @order %>
 
-      <%= f.label :pickup_time %>
-      <%= f.time_field :pickup_time, class:'form_control' %>
+      <p class="offset-2 col-8 center mt-3 pt-5 pb-5 rounded " style="background-color:#a5fea5;"><strong>Opening Hours : 8.00 a.m. - 10.00 p.m. everyday</strong></p>
+      <h5 class="pt-3 pb-2 mt-3 offset-1 offset-md-0">Pick-up Time :</h5><p class="pb-3 offset-1 offset-md-0"><i>( Please set your pick-up time at least a hour from now. The pick-up time cannot be changed within 15 minutes before the chosen time )</i></p> 
+      <div class="offset-2"><%= f.datetime_select :pickup_time, :ampm => true, :minute_step => 15 %></div>
 
-      <%= f.submit "Confirm", class:"btn btn-primary" %>
+      <%= f.submit "Confirm", class:"btn btn-primary mt-3 mb-5 offset-4 col-4 col-md-10 offset-md-1" %>
 
     <% end %>
   </div>
