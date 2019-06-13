@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   belongs_to :order_status
   has_many :order_items
 
-  default_scope -> { order(created_at: :desc) }
+  default_scope -> { order(updated_at: :desc) }
 
   before_create :set_order_status
   before_save :update_subtotal
