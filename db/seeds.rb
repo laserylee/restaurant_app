@@ -13,6 +13,18 @@ User.create!(name: "Admin",
              admin: true,
              confirmed_at: Time.zone.now)
 
+6.times do |n|
+  name = Faker::Name.name
+  email = "cus#{n+1}@test.org"
+  password = "password"
+  User.create!(name: name,
+               email: email,
+               password: password,
+               password_confirmation: password,
+               confirmed_at: Time.zone.now)
+end
+
+
 array = []
 10.times do |n|
   array << Faker::Ancient.god
