@@ -22,6 +22,8 @@ gem 'carrierwave'                                               # Upload stuff
 gem 'mini_magick'                                               # Edit picture
 gem 'devise'                                                    # Authentication
 gem 'faker'                                                     # Faker~
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
