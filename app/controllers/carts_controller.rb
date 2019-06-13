@@ -6,7 +6,7 @@ class CartsController < ApplicationController
   end
 
   def only_pending_orders
-    unless current_order.order_status_id == 1
+    unless current_order.order_status_id == 1 || current_order.order_items.count == 0
       flash[:notice] = "Please view this order inside your order history"
       redirect_to root_path
     end

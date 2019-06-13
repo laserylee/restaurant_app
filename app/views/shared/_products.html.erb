@@ -4,6 +4,20 @@
 
   <div class="row">
 
+  <div class="col-md-2 col-sm-5" style="background-color: #777777;">
+  <nav id ="navcustomer" class="navbar navbar-light  navbar-expand bg-light rounded sticky-top" style="top:55px;">
+    <ul class="navbar-nav flex-column">
+      <% @array.each do |f| %>
+        <li class="nav-item rounded">
+          <a class="nav-link" href="#<%= f %>"><%= f %></a>
+        </li>
+      <% end %>
+    <p id="cart-text"><%= render 'layouts/cart_text' %></p>
+    </ul>
+  </nav>
+  </div>
+
+
     <div class="col-md-10 col-s">
     <% @array.each do |f| %>
       <div class="headertitle" style="padding-top:100px;font-size:4em;" id="<%= f %>"><%= f %></div>
@@ -41,19 +55,6 @@
         </div>
       </div>
     <% end %>
-  </div>
-
-  <div class="col-md-2 col-sm-5" style="background-color: #777777;">
-  <nav id ="navcustomer" class="navbar navbar-light  navbar-expand bg-light rounded sticky-top" style="top:55px;">
-    <ul class="navbar-nav flex-column">
-      <% @array.each do |f| %>
-        <li class="nav-item rounded">
-          <a class="nav-link" href="#<%= f %>"><%= f %></a>
-        </li>
-      <% end %>
-    <p id="cart-text"><%= render 'layouts/cart_text' %></p>
-    </ul>
-  </nav>
   </div>
 
   </div>
