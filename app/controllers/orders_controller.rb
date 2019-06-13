@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
       @order.pickup_time = @pickup_time
       @order.order_status_id = 2
       @order.save!
+      session[:order_id] = nil
     end 
     byebug
   end
