@@ -1,6 +1,6 @@
-<% if  user_signed_in? && !current_user.admin.nil? %>
+<% if  user_signed_in? && current_user.admin == true %>
   <li class="nav-item rounded <%= activeProvide(itemsbyid_path) %>"><%= link_to "Item List By Id", itemsbyid_path, class:"nav-link" %></li>
   <li class="nav-item rounded <%= activeProvide(itemsbycat_path) %>"><%= link_to "Item List By Category", itemsbycat_path, class:"nav-link" %></li>
-  <li class="nav-item rounded <%= activeProvide("orders_index_path") %>"><%= link_to "Orders List", "#", class:"nav-link" %></li>
+  <li class="nav-item rounded <%= activeProvide("orders_index_path") %>"><%= link_to "Orders List", orders_path, class:"nav-link" %></li>
   <li class="nav-item rounded <%= activeProvide(new_item_path) %>"><%= link_to "New Item", new_item_path, class:"nav-link" %></li>
 <% end %>

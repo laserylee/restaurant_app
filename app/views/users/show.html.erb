@@ -26,7 +26,7 @@
   <% @user_orders.each do |f| %>
       <tr>
         <th><%= f.order_code %></th>
-        <th class="col-3"><ul><% f.order_items.each do |k| %><li><%= k.item.name %> (<%= k.quantity %>) </li><% end %></ul></th>
+        <th class="col-3"><ul><% f.order_items.each do |k| %><% unless k.item.nil? %><li><%= k.item.name %> (<%= k.quantity %>) </li><% else %><li style="color:red;">inactive item</li> <% end %><% end %></ul></th>
         <th><%= f.subtotal %></th>
         <th><%= f.pickup_time %></th>
         <th><%= f.created_at %></th>
