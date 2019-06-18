@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.active = true
     if @item.save
       flash[:notice] = "New Item: #{@item.name} is created"
       redirect_to itemsbyid_path
@@ -55,7 +56,7 @@ class ItemsController < ApplicationController
     end
 
     def item_params
-      params.require(:item).permit(:name, :description, :category, :picture, :price)
+      params.require(:item).permit(:name, :description, :category, :picture, :price, :active)
     end
 
 end

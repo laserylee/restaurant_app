@@ -17,6 +17,9 @@
 
       <%= f.label :price %>
       <%= f.number_field :price, class:'form-control', step:'0.01', placeholder:"#{@item.price}"%>
+
+      <%= f.label :active %>
+      <%= f.check_box :active %>
       
       <span class="picture">
         <%= f.file_field :picture %>
