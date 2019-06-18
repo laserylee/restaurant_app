@@ -14,7 +14,7 @@
     <table class="table table-hover table-bordered col-md-10 offset-md-1">
       <thead>
       <tr>
-        <th>Order Code</th>
+        <th>Order Id</th>
         <th>Items</th>
         <th>Total</th>
         <th>Pickup Time</th>
@@ -25,7 +25,7 @@
       </thead>
   <% @user_orders.each do |f| %>
       <tr>
-        <th><%= f.order_code %></th>
+        <th><%= sprintf("%010d",f.id) %></th>
         <th class="col-3"><ul><% f.order_items.each do |k| %><% unless k.item.nil? %><li><%= k.item.name %> (<%= k.quantity %>) </li><% else %><li style="color:red;">inactive item</li> <% end %><% end %></ul></th>
         <th><%= f.subtotal %></th>
         <th><%= f.pickup_time %></th>
