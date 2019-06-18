@@ -21,6 +21,7 @@
         <li class="nav-item1"><%= link_to "log out", destroy_user_session_path , method: :delete, class:"dropdown-link"%></li>
       </li>
      <% else %>
+    <p class="mb-0 cart-btn rounded" id="cart-text"><%= render 'layouts/cart_text' %></p>
        <li class="nav-item rounded <%= activeProvide(new_user_session_path)%>"><%= link_to "Log in", new_user_session_path, class:"nav-link" %></li>
    <% end %>
    </ul>
