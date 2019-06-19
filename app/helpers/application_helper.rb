@@ -24,4 +24,16 @@ module ApplicationHelper
       redirect_to root_url
     end
   end
+
+  def time_diff(time1, time2)
+    t = time1 - time2
+    mm, ss = t.divmod(60)            #=> [4515, 21]
+    hh, mm = mm.divmod(60)           #=> [75, 15]
+    dd, hh = hh.divmod(24)           #=> [3, 3]
+    result = ""
+    if (dd != 0) then result << "#{dd} days" end
+    if (hh != 0) then result << " #{hh} hours" end
+    if (mm != 0) then result << " #{mm} minutes" end
+    return result
+  end
 end
