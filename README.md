@@ -108,3 +108,7 @@ In this app, we will have 2 kind of users, which is customer and admin.
 	* create
 	* update
 	* destroy
+
+Next-Plan
+  * partials of orders sorted in diff ways, best with ajax
+  * manipulation of order status
