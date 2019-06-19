@@ -30,6 +30,7 @@ gem 'faker'                                                     # Faker~
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]           # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'annotate'
 # gem 'capybara', '>= 2.15'                                     # Adds support for Capybara system testing and selenium driver
 # gem 'selenium-webdriver'
 end
