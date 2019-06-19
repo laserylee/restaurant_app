@@ -1,30 +1,9 @@
 <% provide(:title, "Orders List") %>
-<% @order_all = Order.all %>
-<div class="headertitle pt-5">Order List</div>
+<% @order_all = Order.all.where(order_status_id: 2).reorder('pickup_time DESC') %>
+<% @order_expect = @order_all.where(pickup_time: (Time.now - 15.minutes)..(Time.now + 15.minutes)) %>
+<% @order_abandon = @order_all.where("pickup_time < ?", Time.now - 15.minutes) %>
+<% @order_queue = @order_all.where("pickup_time > ?", Time.now + 15.minutes)%>
 
-<div class="col-md-12 offset-md-0 bd-dark">
-  <table class="table table-hover table-borderd", style="font-family: Arial;">
-    <thead>
-      <tr class="table-primary">
-        <th>Id</th>
-        <th>Items</th>
-        <th>Total</th>
-        <th>Pickup Time</th>
-        <th>Ordered At</th>
-        <th>Updated At</th>
-        <th>Status</th>
-      </tr>
-      </thead>
-  <% @order_all.each do |f| %>
-    <tr>
-      <th><%= sprintf("%010d",f.id) %></th>
-      <th class="col-3"><ul><% f.order_items.each do |k| %><% unless k.item.nil? %><li><%= k.item.name %> (<%= k.quantity %>) </li><% else %><li style="color:red;">inactive item</li> <% end %><% end %></ul></th>
-      <th><%= f.subtotal %></th>
-      <th><%= f.pickup_time %></th>
-      <th><%= f.created_at %></th>
-      <th><%= f.updated_at %></th>
-      <th><%= f.order_status.name %></th>
-    </tr>
-  <% end %>
-  </table>
-</div>
+<%= render 'shared/order_target', locals: {target_name:"Expected Orders", order_target: @order_expect } %>
+<%= render 'shared/order_target', locals: {target_name:"On Queue Orders", order_target: @order_queue } %>
+<%= render 'shared/order_target', locals: {target_name:"Abandoned Orders", order_target: @order_abandon } %>
