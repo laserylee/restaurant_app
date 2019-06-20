@@ -2,7 +2,7 @@
 <% @order_all = Order.all.where(order_status_id: 2).reorder('pickup_time ASC') %>
 <% @order_expect = @order_all.where(pickup_time: (Time.zone.now - 15.minutes)..(Time.zone.now + 15.minutes)) %>
 <% @order_queue = @order_all.where("pickup_time > ?", Time.zone.now + 15.minutes)%>
-<% @order_done = Order.all.where(order_status_id: 3).reorder('pickup_time ASC') %>
+<% @order_done = Order.all.where(order_status_id: 3) %>
 <% @order_cancel = Order.all.where(order_status_id: 4) %>
 <% @order_abandon = Order.all.where(order_status_id: 5).reorder('pickup_time ASC') %>
 

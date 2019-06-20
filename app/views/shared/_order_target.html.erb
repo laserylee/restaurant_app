@@ -15,6 +15,7 @@
         <th>Pickup Time</th>
         <th>Time Left</th>
         <th>Details</th>
+        <th>Toggle</th>
       </tr>
       </thead>
   <% unless @order_target.nil? %>
@@ -27,8 +28,13 @@
       <td><%= f.updated_at.strftime('%d %^b %H:%M')  %></td>
       <td><%= f.order_status.name %></td>
       <td><%= f.pickup_time.strftime('%d %^b %H:%M')   %></td>
-      <td><%= time_diff(f.pickup_time, Time.zone.now) %></td>
+      <td><% if f.order_status_id == 2 %><%= time_diff(f.pickup_time, Time.zone.now) %><% else %>NA<% end %></td>
       <td class="center"><%= link_to "view", order_path(f), style:'font-size:1.4em;' %></td>
+      <td class="center">
+        <% if f.order_status_id != 3 && f.order_status_id != 4 %>
+          <%= link_to "done", "/orders/done/#{f.id}", style:'font-size:1.4em;' %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 <% end %>
