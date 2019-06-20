@@ -22,7 +22,7 @@
   <% @products.each do |f| %>
     <tr class="table-<%= @colors[i%5] %>">
     <td><%= f.id %></td>
-    <td><%= f.name %></td>
+    <td><b><%= f.name %></b></td>
     <td><%= f.description %></td>
     <td><%= f.category %></td>
     <td><%= image_tag f.picture.url, size:"100x100", class:"logo" if f.picture?%></td>

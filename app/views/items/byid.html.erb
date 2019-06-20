@@ -24,7 +24,7 @@
   <% @products.each do |f| %>
     <tr class="table-<%= @colors[@array.index("#{f.category}")%6] %>">
     <td><%= f.id %></td>
-    <td style="color:<% if f.active %>#53a953<%else%>#ff0000<%end%>;"><%= f.name %></td>
+    <td style="color:<% if f.active %>#000000<%else%>#ff0000<%end%>;"><b><%= f.name %></b></td>
     <td><%= f.description %></td>
     <td><%= f.category %></td>
     <td><%= image_tag f.picture.url, size:"100x100", class:"logo" if f.picture?%></td>
