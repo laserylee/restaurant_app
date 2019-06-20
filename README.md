@@ -112,4 +112,5 @@ In this app, we will have 2 kind of users, which is customer and admin.
 Next-Plan
   * partials of orders sorted in diff ways, best with ajax
   * manipulation of order status
-  * fix the misbehaviour of time comparing
+  * ~~fix the misbehaviour of time comparing~~
+  * user index
