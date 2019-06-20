@@ -10,25 +10,27 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    unless @order.user_id == current_user.id || current_user.admin
-      flash[:notice] = "This is not your order"
-      redirect_to root_url
-    end
+    redirectIncorrectUser
     if (@order.pickup_time >= (Time.zone.now - 15.minutes)) && (@order.pickup_time <= (Time.zone.now + 15.minutes)) && (@order.order_status_id == 2)
-      flash[:alert] = "Your order is getting readied by our staff now. Please be punctual to get your order."
+      flash[:notice] =  "Your order is getting readied by our staff now. Please be punctual to get your order."
     end
   end
 
   def edit
     @order = Order.find(params[:id])
-    if !@order.pickup_time.nil? && @order.pickup_time > (Time.zone.now - 15.minutes)
-      flash[:alert] = "You cannot change the pickup time 15 minutes prior to the agreed pickup time"
-      render user_path(@order.user_id)
+    redirectIncorrectUser
+    if @order.order_status_id != 2
+      flash[:alert] = "Sorry that the pickup time of your order is no longer editable."
+      redirect_to order_path(@order)
+    elsif !@order.pickup_time.nil? && Time.zone.now > (@order.pickup_time - 15.minutes)
+      flash[:alert] = "You cannot change the pickup time after 15 minutes prior to the agreed pickup time."
+      redirect_to order_path(@order)
     end
   end
 
   def update
     @order = Order.find(params[:id])
+    redirectIncorrectUser
     y = params[:order]["pickup_time(1i)"]
     mo = params[:order]["pickup_time(2i)"]
     d = params[:order]["pickup_time(3i)"]
@@ -59,6 +61,7 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = Order.find(params[:id])
+    redirectIncorrectUser
     if User.find(@order.user_id).admin
       @order.order_status_id = 4
       @order.save
@@ -87,6 +90,12 @@ private
       flash[:notice] = "Please sign in first."
       redirect_to new_user_session_path
     end
+  end
+
+  def redirectIncorrectUser
+    unless current_user.id == @order.user_id || current_user.admin
+      flash[:alert] = "You dont have permission to view this page"
+      redirect_to root_url
   end
 
   def updateAbandonedStatus

@@ -48,7 +48,7 @@
     <tr>
       <th class="text-right">Pickup Time</th>
       <td class="center"> : </td>
-      <td class="text-left"><%= @order.pickup_time.strftime('%d %^b %H:%M') %></td>
+      <td class="text-left"><%= @order.pickup_time.strftime('%d %^b %H:%M') %> <%= link_to "Change", edit_order_path(@order) %></td>
     </tr>
     <tr>
       <th class="text-right">Time Left</th>
