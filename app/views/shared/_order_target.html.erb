@@ -2,18 +2,19 @@
 <% @order_target = locals[:order_target] %>
 <div class="headertitle pt-5"><%= @target_name %></div>
 
-<div class="col-md-12 offset-md-0 bd-dark">
-  <table class="table table-hover table-bordered", style="font-family: Arial;">
+<div class="col-md-10 offset-md-1 bd-dark mt-3">
+  <table class="table table-hover table-bordered"?
     <thead>
       <tr class="table-primary">
         <th>Order Id</th>
         <th>Id</th>
         <th>Items</th>
         <th>Total</th>
-        <th>Pickup Time</th>
         <th>Updated At</th>
         <th>Status</th>
+        <th>Pickup Time</th>
         <th>Time Left</th>
+        <th>Details</th>
       </tr>
       </thead>
   <% unless @order_target.nil? %>
@@ -23,10 +24,11 @@
       <td><%= f.user_id %></td>
       <td class="col-3"><ul><% f.order_items.each do |k| %><% unless k.item.nil? %><li><%= k.item.name %> (<%= k.quantity %>) </li><% else %><li style="color:red;">inactive item</li> <% end %><% end %></ul></td>
       <td><%= f.subtotal %></td>
-      <td><%= f.pickup_time.strftime('%d %^b %H:%M')   %></td>
       <td><%= f.updated_at.strftime('%d %^b %H:%M')  %></td>
       <td><%= f.order_status.name %></td>
+      <td><%= f.pickup_time.strftime('%d %^b %H:%M')   %></td>
       <td><%= time_diff(f.pickup_time, Time.zone.now) %></td>
+      <td class="center"><%= link_to "view", order_path(f), style:'font-size:1.4em;' %></td>
     </tr>
   <% end %>
 <% end %>

@@ -1,40 +1,20 @@
-<% provide(:title, "Profile") %>
+<% provide(:title, "Profile (#{@user.name})") %>
 
-<div class="headertitle">User Profile</div>
-<h4 class="center mt-3"><%= current_user.name %></h4>
-<% @user_orders = current_user.orders %>
+<div class="headertitle">User Profile ~ <%= @user.name %></div>
+<% @user_orders = @user.orders.reorder('pickup_time ASC') %>
 
 
-<h4 class="center mt-5 mb-3">Orders</h4>
 <% unless @user_orders == [] %>
   <% @ordered_orders = @user_orders.where(order_status_id:2) %>
   <% @picked_up_orders = @user_orders.where(order_status_id:3) %>
   <% @cancelled_orders = @user_orders.where(order_status_id:4) %>
   <% @abandoned_orders = @user_orders.where(order_status_id:5) %>
-    <table class="table table-hover table-bordered col-md-10 offset-md-1">
-      <thead>
-      <tr>
-        <th>Order Id</th>
-        <th>Items</th>
-        <th>Total</th>
-        <th>Pickup Time</th>
-        <th>Ordered At</th>
-        <th>Updated At</th>
-        <th>Status</th>
-      </tr>
-      </thead>
-  <% @user_orders.each do |f| %>
-      <tr>
-        <th><%= sprintf("%010d",f.id) %></th>
-        <th class="col-3"><ul><% f.order_items.each do |k| %><% unless k.item.nil? %><li><%= k.item.name %> (<%= k.quantity %>) </li><% else %><li style="color:red;">inactive item</li> <% end %><% end %></ul></th>
-        <th><%= f.subtotal %></th>
-        <th><%= f.pickup_time %></th>
-        <th><%= f.created_at %></th>
-        <th><%= f.updated_at %></th>
-        <th><%= f.order_status.name %></th>
-      </tr>
-  <% end %>
-    </table>
+
+  <%= render 'shared/order_target', locals: {target_name:"Ordered Orders", order_target: @ordered_orders } %>
+  <%= render 'shared/order_target', locals: {target_name:"Picked Up Orders", order_target: @picked_up_orders } %>
+  <%= render 'shared/order_target', locals: {target_name:"Abandoned Orders", order_target: @abandoned_orders } %>
+  <%= render 'shared/order_target', locals: {target_name:"Cancelled Orders", order_target: @cancelled_orders } %>
+
 <% else %>
   <p class="mt-3 center">Unfortunately you havent any orders yet. <%= link_to "Order now !!", root_path %></p>
 <% end %>
