@@ -96,6 +96,7 @@ private
     unless current_user.id == @order.user_id || current_user.admin
       flash[:alert] = "You dont have permission to view this page"
       redirect_to root_url
+    end
   end
 
   def updateAbandonedStatus

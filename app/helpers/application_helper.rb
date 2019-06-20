@@ -18,8 +18,7 @@ module ApplicationHelper
   end
 
   def redirectNonAdmin
-    unless user_signed_in? && !current_user.admin.nil?
-      byebug
+    unless user_signed_in? && current_user.admin
       flash[:alert] = "You don't have authorization to view this page."
       redirect_to root_url
     end
