@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   include ApplicationHelper
 
   before_action :redirectSignIn,   only: [:edit, :update, :destroy, :show]
-  before_action :redirectNonAdmin, only: [:index]
+  before_action :redirectNonAdmin, only: [:index, :done]
 
   def index
     updateAbandonedStatus
@@ -44,6 +44,14 @@ class OrdersController < ApplicationController
       render 'edit'
     end
   end
+
+  def done
+    target = Order.find(params[:id])
+    target.order_status_id = 3
+    target.save
+    render 'index'
+  end
+
 
   def destroy
   end
