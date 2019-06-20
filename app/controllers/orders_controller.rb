@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   before_action :redirectNonAdmin, only: [:index]
 
   def index
+    updateAbandonedStatus
   end
 
   def show
@@ -47,10 +48,22 @@ class OrdersController < ApplicationController
   def destroy
   end
 
+private
+
   def redirectSignIn
     unless user_signed_in?
       flash[:notice] = "Please sign in first."
       redirect_to new_user_session_path
+    end
+  end
+
+  def updateAbandonedStatus
+    @orderO = Order.all.where(order_status_id: 2)
+    @orderO.all.each do |f|
+      if f.pickup_time < Time.zone.now - 15.minutes
+        f.order_status_id = 5
+        f.save
+      end
     end
   end
 

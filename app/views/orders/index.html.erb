@@ -1,10 +1,14 @@
 <% provide(:title, "Orders List") %>
 <% @order_all = Order.all.where(order_status_id: 2).reorder('pickup_time ASC') %>
 <% @order_expect = @order_all.where(pickup_time: (Time.zone.now - 15.minutes)..(Time.zone.now + 15.minutes)) %>
-<% @order_abandon = @order_all.where("pickup_time < ?", Time.zone.now - 15.minutes) %>
 <% @order_queue = @order_all.where("pickup_time > ?", Time.zone.now + 15.minutes)%>
+<% @order_done = Order.all.where(order_status_id: 3).reorder('pickup_time ASC') %>
+<% @order_cancel = Order.all.where(order_status_id: 4) %>
+<% @order_abandon = Order.all.where(order_status_id: 5).reorder('pickup_time ASC') %>
 
 <h4 class="center pt-3 pb-3"><%= Time.zone.now %></h4>
 <%= render 'shared/order_target', locals: {target_name:"Expected Orders", order_target: @order_expect } %>
 <%= render 'shared/order_target', locals: {target_name:"On Queue Orders", order_target: @order_queue } %>
+<%= render 'shared/order_target', locals: {target_name:"Done Orders", order_target: @order_done } %>
+<%= render 'shared/order_target', locals: {target_name:"Cancelled Orders", order_target: @order_cancel } %>
 <%= render 'shared/order_target', locals: {target_name:"Abandoned Orders", order_target: @order_abandon } %>
