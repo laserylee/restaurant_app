@@ -15,7 +15,7 @@
         <th>Pickup Time</th>
         <th>Time Left</th>
         <th>Details</th>
-        <th>Toggle</th>
+        <% if current_user.admin %><th>Toggle</th><% end %>
         <th>Cancel</th>
       </tr>
       </thead>
@@ -31,11 +31,13 @@
       <td><%= f.pickup_time.strftime('%d %^b %H:%M')   %></td>
       <td><% if f.order_status_id == 2 %><%= time_diff(f.pickup_time, Time.zone.now) %><% else %>NA<% end %></td>
       <td class="center"><%= link_to "view", order_path(f), style:'font-size:1.4em;' %></td>
-      <td class="center">
-        <% if f.order_status_id != 3 && f.order_status_id != 4 %>
-          <%= link_to "done", "/orders/done/#{f.id}", style:'font-size:1.4em;' %>
-        <% end %>
-      </td>
+      <% if current_user.admin %>
+        <td class="center">
+          <% if f.order_status_id != 3 && f.order_status_id != 4 %>
+            <%= link_to "done", "/orders/done/#{f.id}", style:'font-size:1.4em;' %>
+          <% end %>
+        </td>
+      <% end %>
       <td><%= link_to "cancel", f, method: :delete, style:'font-size:1.4em;' %></td>
     </tr>
   <% end %>
