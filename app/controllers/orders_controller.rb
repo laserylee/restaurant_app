@@ -21,6 +21,10 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
+    if !@order.pickup_time.nil? && @order.pickup_time > (Time.zone.now - 15.minutes)
+      flash[:alert] = "You cannot change the pickup time 15 minutes prior to the agreed pickup time"
+      render user_path(@order.user_id)
+    end
   end
 
   def update
@@ -46,14 +50,34 @@ class OrdersController < ApplicationController
   end
 
   def done
-    target = Order.find(params[:id])
-    target.order_status_id = 3
-    target.save
+    @order = Order.find(params[:id])
+    @order.order_status_id = 3
+    @order.save
     render 'index'
   end
 
 
   def destroy
+    @order = Order.find(params[:id])
+    if User.find(@order.user_id).admin
+      @order.order_status_id = 4
+      @order.save
+      render 'index'
+    else
+      if @order.pickup_time >= Time.zone.now - 15.minutes
+        if @order.pickup_time <= Time.zone.now + 15.minutes
+          flash[:alert] = "You are too late to cancel this order, please get your order from the restaurant."
+          render user_path(@order.user_id)
+        else
+          flash[:alert] = "You have abandoned this order."
+          render user_path(@order.user_id)
+        end
+      else
+        @order.order_status_id = 4
+        @order.save
+        render user_path(@order.user_id)
+      end
+    end
   end
 
 private

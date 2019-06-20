@@ -41,6 +41,11 @@
       <td class="text-left"><%= User.find(@order.user_id).name %>  (<%= @order.user_id %>)</td>
     </tr>
     <tr>
+      <th class="text-right">Status</th>
+      <td class="center"> : </td>
+      <td class="text-left" style="color:red;"><b><%= @order.order_status.name %></b></td>
+    </tr>
+    <tr>
       <th class="text-right">Pickup Time</th>
       <td class="center"> : </td>
       <td class="text-left"><%= @order.pickup_time.strftime('%d %^b %H:%M') %></td>
