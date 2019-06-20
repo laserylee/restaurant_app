@@ -23,10 +23,10 @@
       <th><%= f.user_id %></th>
       <th class="col-3"><ul><% f.order_items.each do |k| %><% unless k.item.nil? %><li><%= k.item.name %> (<%= k.quantity %>) </li><% else %><li style="color:red;">inactive item</li> <% end %><% end %></ul></th>
       <th><%= f.subtotal %></th>
-      <th><%= f.pickup_time.strftime('%d %^b %H:%M') %></th>
+      <th><%= f.pickup_time.strftime('%d %^b %H:%M')   %></th>
       <th><%= f.updated_at.strftime('%d %^b %H:%M')  %></th>
       <th><%= f.order_status.name %></th>
-      <th><%= time_diff(f.pickup_time, Time.now) %></th>
+      <th><%= time_diff(f.pickup_time, Time.zone.now) %></th>
     </tr>
   <% end %>
 <% end %>

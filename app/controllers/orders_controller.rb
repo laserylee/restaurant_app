@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     unless @order.user_id == current_user.id || current_user.admin
-      byebug
       flash[:notice] = "This is not your order"
       redirect_to root_url
     end
@@ -27,7 +26,7 @@ class OrdersController < ApplicationController
     d = params[:order]["pickup_time(3i)"]
     h = params[:order]["pickup_time(4i)"]
     mi = params[:order]["pickup_time(5i)"]
-    @pickup_time = Time.zone.new(y,mo,d,h,mi)
+    @pickup_time = Time.utc(y,mo,d,h,mi,0).in_time_zone
     if @pickup_time > (Time.zone.now + 1.hours)
       @order.pickup_time = @pickup_time
       @order.order_status_id = 2
