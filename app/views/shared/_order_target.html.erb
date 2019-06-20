@@ -19,14 +19,14 @@
   <% unless @order_target.nil? %>
   <% @order_target.each do |f| %>
     <tr>
-      <th><%= sprintf("%010d",f.id) %></th>
-      <th><%= f.user_id %></th>
-      <th class="col-3"><ul><% f.order_items.each do |k| %><% unless k.item.nil? %><li><%= k.item.name %> (<%= k.quantity %>) </li><% else %><li style="color:red;">inactive item</li> <% end %><% end %></ul></th>
-      <th><%= f.subtotal %></th>
-      <th><%= f.pickup_time.strftime('%d %^b %H:%M')   %></th>
-      <th><%= f.updated_at.strftime('%d %^b %H:%M')  %></th>
-      <th><%= f.order_status.name %></th>
-      <th><%= time_diff(f.pickup_time, Time.zone.now) %></th>
+      <td><%= sprintf("%010d",f.id) %></td>
+      <td><%= f.user_id %></td>
+      <td class="col-3"><ul><% f.order_items.each do |k| %><% unless k.item.nil? %><li><%= k.item.name %> (<%= k.quantity %>) </li><% else %><li style="color:red;">inactive item</li> <% end %><% end %></ul></td>
+      <td><%= f.subtotal %></td>
+      <td><%= f.pickup_time.strftime('%d %^b %H:%M')   %></td>
+      <td><%= f.updated_at.strftime('%d %^b %H:%M')  %></td>
+      <td><%= f.order_status.name %></td>
+      <td><%= time_diff(f.pickup_time, Time.zone.now) %></td>
     </tr>
   <% end %>
 <% end %>

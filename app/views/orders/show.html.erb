@@ -1,3 +1,65 @@
-<% provide(:title, @order.order_code ) %>
+<% provide(:title, sprintf("%010d", @order.id)) %>
 
-<div class="headertitle"><%= @order.order_code %></div>
+<div class="headertitle"><%= sprintf("%010d", @order.id) %></div>
+<div class="col-md-8 offset-md-2 mt-3">
+<table class="table table-bordered">
+  <thead>
+    <tr class="table-primary">
+      <th>Item</th>
+      <th>Price/Unit</th>
+      <th>Qty</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @order.order_items.each do |f| %>
+    <tr>
+      <td><%= f.item.name %></td>
+      <td><%= sprintf("RM%.2f", f.item.price) %></td>
+      <td><%= f.quantity %></td>
+      <td><%= sprintf("RM%.2f", f.total_price) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+    <tr class="table-success">
+      <td></td>
+      <td></td>
+      <td>Total</td>
+      <td><b><%= sprintf("RM%.2f", @order.subtotal) %></b></td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+
+<div class="col-md-8 offset-md-2">
+<table class="table table-borderless">
+  <tbody>
+    <tr>
+      <th class="text-right">Name</th>
+      <td class="center"> : </td>
+      <td class="text-left"><%= User.find(@order.user_id).name %>  (<%= @order.user_id %>)</td>
+    </tr>
+    <tr>
+      <th class="text-right">Pickup Time</th>
+      <td class="center"> : </td>
+      <td class="text-left"><%= @order.pickup_time.strftime('%d %^b %H:%M') %></td>
+    </tr>
+    <tr>
+      <th class="text-right">Time Left</th>
+      <td class="center"> : </td>
+      <td class="text-left"><b><%= time_diff(@order.pickup_time, Time.zone.now) %></b></td>
+    </tr>
+    <tr>
+      <th class="text-right">Ordered Time</th>
+      <td class="center"> : </td>
+      <td class="text-left"><%= @order.created_at.strftime('%d %^b %H:%M') %></td>
+    </tr>
+    <tr>
+      <th class="text-right">Updated Time</th>
+      <td class="center"> : </td>
+      <td class="text-left"><%= @order.updated_at.strftime('%d %^b %H:%M') %></td>
+    </tr>
+  </tbody>
+</table>
+</div>

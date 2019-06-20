@@ -23,14 +23,14 @@
   <tbody>
   <% @products.each do |f| %>
     <tr class="table-<%= @colors[@array.index("#{f.category}")%6] %>">
-    <th><%= f.id %></th>
-    <th style="color:<% if f.active %>#53a953<%else%>#ff0000<%end%>;"><%= f.name %></th>
-    <th><%= f.description %></th>
-    <th><%= f.category %></th>
-    <th><%= image_tag f.picture.url, size:"100x100", class:"logo" if f.picture?%></th>
-    <th><%= f.price %></th>
-    <th><%= link_to "Edit", edit_item_path(f)%></th>
-    <th><%= link_to "Del", f , method: :delete, data: { confirm: "Are you sure to delete #{f.name}?" } %></th>
+    <td><%= f.id %></td>
+    <td style="color:<% if f.active %>#53a953<%else%>#ff0000<%end%>;"><%= f.name %></td>
+    <td><%= f.description %></td>
+    <td><%= f.category %></td>
+    <td><%= image_tag f.picture.url, size:"100x100", class:"logo" if f.picture?%></td>
+    <td><%= f.price %></td>
+    <td><%= link_to "Edit", edit_item_path(f)%></td>
+    <td><%= link_to "Del", f , method: :delete, data: { confirm: "Are you sure to delete #{f.name}?" } %></td>
     </tr>
   <% end %>
   </tbody>

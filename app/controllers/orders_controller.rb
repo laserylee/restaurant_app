@@ -13,6 +13,9 @@ class OrdersController < ApplicationController
       flash[:notice] = "This is not your order"
       redirect_to root_url
     end
+    if (@order.pickup_time >= (Time.zone.now - 15.minutes)) && (@order.pickup_time <= (Time.zone.now + 15.minutes)) && (@order.order_status_id == 2)
+      flash[:alert] = "Your order is getting readied by our staff now. Please be punctual to get your order."
+    end
   end
 
   def edit
