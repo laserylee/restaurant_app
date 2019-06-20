@@ -16,6 +16,7 @@
         <th>Time Left</th>
         <th>Details</th>
         <th>Toggle</th>
+        <th>Cancel</th>
       </tr>
       </thead>
   <% unless @order_target.nil? %>
@@ -35,6 +36,7 @@
           <%= link_to "done", "/orders/done/#{f.id}", style:'font-size:1.4em;' %>
         <% end %>
       </td>
+      <td><%= link_to "cancel", f, method: :delete, style:'font-size:1.4em;' %></td>
     </tr>
   <% end %>
 <% end %>

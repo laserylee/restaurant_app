@@ -18,13 +18,15 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
-    redirectIncorrectUser
-    if @order.order_status_id != 2
-      flash[:alert] = "Sorry that the pickup time of your order is no longer editable."
-      redirect_to order_path(@order)
-    elsif !@order.pickup_time.nil? && Time.zone.now > (@order.pickup_time - 15.minutes)
-      flash[:alert] = "You cannot change the pickup time after 15 minutes prior to the agreed pickup time."
-      redirect_to order_path(@order)
+    unless @order.order_status_id == 1
+      redirectIncorrectUser
+      if @order.order_status_id != 2
+        flash[:alert] = "Sorry that the pickup time of your order is no longer editable."
+        redirect_to order_path(@order)
+      elsif !@order.pickup_time.nil? && Time.zone.now > (@order.pickup_time - 15.minutes)
+        flash[:alert] = "You cannot change the pickup time after 15 minutes prior to the agreed pickup time."
+        redirect_to order_path(@order)
+      end
     end
   end
 
@@ -67,18 +69,18 @@ class OrdersController < ApplicationController
       @order.save
       render 'index'
     else
-      if @order.pickup_time >= Time.zone.now - 15.minutes
-        if @order.pickup_time <= Time.zone.now + 15.minutes
+      if @order.pickup_time <= Time.zone.now + 15.minutes
+        if @order.pickup_time >= Time.zone.now - 15.minutes
           flash[:alert] = "You are too late to cancel this order, please get your order from the restaurant."
-          render user_path(@order.user_id)
+          redirect_to user_path(@order.user_id)
         else
           flash[:alert] = "You have abandoned this order."
-          render user_path(@order.user_id)
+          redirect_to user_path(@order.user_id)
         end
       else
         @order.order_status_id = 4
         @order.save
-        render user_path(@order.user_id)
+        redirect_to user_path(@order.user_id)
       end
     end
   end
