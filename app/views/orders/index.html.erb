@@ -4,6 +4,8 @@
 <% @order_abandon = @order_all.where("pickup_time < ?", Time.now - 15.minutes) %>
 <% @order_queue = @order_all.where("pickup_time > ?", Time.now + 15.minutes)%>
 
+<h4 class="center pt-3 pb-3"><%= Time.zone.now %> <%= Time.now %></h4>
 <%= render 'shared/order_target', locals: {target_name:"Expected Orders", order_target: @order_expect } %>
 <%= render 'shared/order_target', locals: {target_name:"On Queue Orders", order_target: @order_queue } %>
 <%= render 'shared/order_target', locals: {target_name:"Abandoned Orders", order_target: @order_abandon } %>
+<% byebug %>

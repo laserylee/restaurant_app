@@ -27,8 +27,8 @@ class OrdersController < ApplicationController
     d = params[:order]["pickup_time(3i)"]
     h = params[:order]["pickup_time(4i)"]
     mi = params[:order]["pickup_time(5i)"]
-    @pickup_time = Time.new(y,mo,d,h,mi)
-    if @pickup_time > (Time.now + 1.hours)
+    @pickup_time = Time.zone.new(y,mo,d,h,mi)
+    if @pickup_time > (Time.zone.now + 1.hours)
       @order.pickup_time = @pickup_time
       @order.order_status_id = 2
       @order.user_id = current_user.id
