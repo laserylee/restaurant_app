@@ -23,9 +23,11 @@ class OrdersController < ApplicationController
       if @order.order_status_id != 2
         flash[:alert] = "Sorry that the pickup time of your order is no longer editable."
         redirect_to order_path(@order)
+        return
       elsif !@order.pickup_time.nil? && Time.zone.now > (@order.pickup_time - 15.minutes)
         flash[:alert] = "You cannot change the pickup time after 15 minutes prior to the agreed pickup time."
         redirect_to order_path(@order)
+        return
       end
     end
   end
