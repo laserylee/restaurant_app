@@ -66,7 +66,8 @@ class OrdersController < ApplicationController
   def destroy
     @order = Order.find(params[:id])
     redirectIncorrectUser
-    if User.find(@order.user_id).admin
+      byebug
+    if current_user.admin
       @order.order_status_id = 4
       @order.save
       render 'index'
