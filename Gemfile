@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.2.2'                                         # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'sqlite3'                                                   # Use sqlite3 as the database for Active Record
 gem 'puma', '~> 3.7'                                            # Use Puma as the app server
 gem 'sass-rails', '~> 5.0'                                      # Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0'                                      # Use Uglifier as compressor for JavaScript assets
@@ -36,6 +35,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'sqlite3'                                                   # Use sqlite3 as the database for Active Record
   gem 'web-console', '>= 3.3.0'                                 # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'                                                  # Spring speeds up development by keeping your application running in the 
