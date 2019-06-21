@@ -48,16 +48,16 @@ OrderStatus.create! id: 5, name: "Abandoned"
 100.times do |n|
   xorder = Order.new
   xorder.order_status_id = 1
-  xorder.order_items.new(item_id: rand(30),
-                         quantity: rand(5))
+  xorder.order_items.new(item_id: rand(29)+1,
+                         quantity: rand(5)+1)
   xorder.save
   while (rand(19683)%3 == 0) do
-    xorder.order_items.new(item_id: rand(30),
-                           quantity: rand(5))
+    xorder.order_items.new(item_id: rand(29)+1,
+                           quantity: rand(5)+1)
     xorder.save
   end
   xorder.pickup_time = Time.zone.now + rand(10).hours + rand(60).minutes - 5.hours - 30.minutes
-  xorder.user_id = rand(10)
+  xorder.user_id = rand(9)+1
   xorder.order_status_id = 2
   xorder.save
 end
