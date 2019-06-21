@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Admin
 User.create!(name: "Admin",
              email: "admin@admin.admin",
              password: "1;r2;r3;r777",
@@ -13,7 +14,8 @@ User.create!(name: "Admin",
              admin: true,
              confirmed_at: Time.zone.now)
 
-6.times do |n|
+# First Ten Fake User
+10.times do |n|
   name = Faker::Name.name
   email = "cus#{n+1}@test.org"
   password = "password"
@@ -24,12 +26,13 @@ User.create!(name: "Admin",
                confirmed_at: Time.zone.now)
 end
 
-
+# Fake Categories
 array = []
 10.times do |n|
   array << Faker::Ancient.god
 end
 
+# Fake Items
 30.times do |n|
   name = Faker::Name.name
   category = array.shuffle.first
@@ -42,13 +45,30 @@ end
                active: true)
 end
 
-
 OrderStatus.delete_all
 OrderStatus.create! id: 1, name: "In Progress"
 OrderStatus.create! id: 2, name: "Ordered"
 OrderStatus.create! id: 3, name: "Picked Up"
 OrderStatus.create! id: 4, name: "Cancelled"
 OrderStatus.create! id: 5, name: "Abandoned"
+
+# Fake Orders
+100.times do |n|
+  xorder = Order.new
+  xorder.order_status_id = 1
+  xorder.order_items.new(item_id: rand(30),
+                         quantity: rand(5))
+  xorder.save
+  while (rand(19683)%3 == 0) do
+    xorder.order_items.new(item_id: rand(30),
+                           quantity: rand(5))
+    xorder.save
+  end
+  xorder.pickup_time = Time.zone.now + rand(10).hours + rand(60).minutes - 5.hours - 30.minutes
+  xorder.user_id = rand(10)
+  xorder.order_status_id = 2
+  xorder.save
+end
 
 # 99.times do |n|
 #  name = Faker::Name.name
