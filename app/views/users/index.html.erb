@@ -1,0 +1,48 @@
+<% provide(:title, "User List") %>
+<div class="headertitle">All Users</div>
+
+<div class="col-md-10 offset-md-1 bd-dark mt-3">
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr class="table-primary center">
+        <th>Id</th>
+        <th>Admin</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+        <th>Details</th>
+        <th>Orders</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+  <% @users.each do |f| %>
+    <tr>
+      <td><%= f.id %></td>
+      <td class="center"><% if  f.admin %>yes<% end %></td>
+      <td><%= f.created_at.strftime('%d %^b %H:%M') %></td>
+      <td><%= f.updated_at.strftime('%d %^b %H:%M')  %></td>
+      <td class="center"><%= link_to "VIEW", user_path(f), style:'font-size:1.2em;' %></td>
+      <td>
+        <% @orders = f.orders.all.reorder('order_status_id ASC') %>
+          <% @orders.each do |k| %>
+            <%= link_to "#{sprintf("%010d", k.id)}", order_path(k) %>&nbsp&nbsp 
+              <% case k.order_status_id %>
+              <% when 1 %>
+                <strong style="color:pink;">Pending&nbsp&nbsp&nbsp&nbsp&nbsp </strong>
+              <% when 2 %>
+                <strong style="color:blue;">Ordered&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  </strong>
+              <% when 3 %>
+                <strong style="color:green;">PickedUp&nbsp&nbsp&nbsp&nbsp&nbsp </strong>
+              <% when 4 %>
+                <strong style="color:grey;">Cancelled&nbsp&nbsp&nbsp&nbsp&nbsp </strong>
+              <% when 5 %>
+                <strong style="color:red;">Abandoned&nbsp</strong>
+              <% end %>
+                RM <%= sprintf("%.2f", k.subtotal) %>
+              <br>
+          <% end %>
+      </td>
+      <td class="center"><%= link_to "DEL", f, method: :delete, style:'font-size:1.2em;' %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
