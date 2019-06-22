@@ -6,6 +6,7 @@
     <thead>
       <tr class="table-primary center">
         <th>Id</th>
+        <th>Name</th>
         <th>Admin</th>
         <th>Created At</th>
         <th>Updated At</th>
@@ -17,6 +18,7 @@
   <% @users.each do |f| %>
     <tr>
       <td><%= f.id %></td>
+      <td><%= f.name %></td>
       <td class="center"><% if  f.admin %>yes<% end %></td>
       <td><%= f.created_at.strftime('%d %^b %H:%M') %></td>
       <td><%= f.updated_at.strftime('%d %^b %H:%M')  %></td>
