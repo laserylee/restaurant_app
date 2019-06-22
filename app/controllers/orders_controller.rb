@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
-    if @order.order_status_id != 2
+    if @order.order_status_id > 2
       flash[:alert] = "Sorry that the pickup time of your order is no longer editable."
       redirect_to order_path(@order)
     elsif !@order.pickup_time.nil? && Time.zone.now > (@order.pickup_time - 15.minutes)
