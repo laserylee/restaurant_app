@@ -20,7 +20,7 @@ module ApplicationHelper
   def redirectNonAdmin
     unless user_signed_in? && current_user.admin
       flash[:alert] = "You don't have authorization to view this page."
-      redirect_to root_url
+      redirect_to root_url and return
     end
   end
 
