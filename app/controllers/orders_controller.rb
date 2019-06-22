@@ -48,8 +48,7 @@ class OrdersController < ApplicationController
       @order.order_code = SecureRandom.urlsafe_base64
       @order.save!
       session[:order_id] = nil
-      redirect_to order_path(@order)
-      return
+      redirect_to order_path(@order) and return
     else
       flash[:notice] = "Please choose a time which is at least 1 hour later than this order"
       render 'edit'
