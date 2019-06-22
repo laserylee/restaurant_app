@@ -49,9 +49,11 @@ class OrdersController < ApplicationController
       @order.save!
       session[:order_id] = nil
       redirect_to order_path(@order)
+      return
     else
       flash[:notice] = "Please choose a time which is at least 1 hour later than this order"
       render 'edit'
+      return
     end
   end
 
@@ -70,19 +72,23 @@ class OrdersController < ApplicationController
       @order.order_status_id = 4
       @order.save
       render 'index'
+      return
     else
       if @order.pickup_time <= Time.zone.now + 15.minutes
         if @order.pickup_time >= Time.zone.now - 15.minutes
           flash[:alert] = "You are too late to cancel this order, please get your order from the restaurant."
           redirect_to user_path(@order.user_id)
+          return
         else
           flash[:alert] = "You have abandoned this order."
           redirect_to user_path(@order.user_id)
+          return
         end
       else
         @order.order_status_id = 4
         @order.save
         redirect_to user_path(@order.user_id)
+        return
       end
     end
   end
