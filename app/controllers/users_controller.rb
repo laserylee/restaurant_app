@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
+  before_action :redirectNonAdmin, only: :index
 
   def index
     @users = User.all
