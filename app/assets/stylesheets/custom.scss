@@ -1,5 +1,18 @@
 @import "bootstrap";
 
+/* grid */
+@include media-breakpoint-up(md) {
+  .card-deck {
+    margin-left: 30px;
+  }
+  .card {
+    max-width: 28%;
+    min-width: 28%;
+  }
+}
+
+
+
 /* mixin, variables */
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -179,6 +192,11 @@ input {
   line-height: 0.9;
   padding-bottom: 0;
   margin-bottom: 3px;
+}
+
+.card-deck .card {
+  min-width: 28%;
+  margin-bottom: 15px;
 }
 
 .category-card {
