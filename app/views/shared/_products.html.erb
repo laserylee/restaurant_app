@@ -26,7 +26,7 @@
           <% @products.each_with_index do |k,i| %>
           <div class="card">
             <% if k.picture? %>
-              <%= image_tag(k.picture.url, size:"210x210", alt:"#{k}")%>
+              <%= image_tag(k.picture.url, class:"card-img-top img-fluid", alt:"#{k}")%>
             <% else %>
               <%= image_tag("noo.png", class:"card-img-top img-fluid" ,alt:"#{k}") %>
             <% end %>
