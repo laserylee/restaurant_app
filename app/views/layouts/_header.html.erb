@@ -11,7 +11,7 @@
     <ul class="navbar-nav flex-md-row  flex-column ml-md-auto">
     <% if user_signed_in? %>
     <p class="mb-0 cart-btn rounded" id="cart-text"><%= render 'layouts/cart_text' %></p>
-    <li class="dropdown nav-item1 rounded">
+     <li class="dropdown nav-item1 rounded">
       <a href="#" class="dropdown-toggle dropdown-link center" data-toggle="dropdown">account<b class="caret"></b>
       </a>
       <ul class="dropdown-menu bg-dark">
@@ -22,7 +22,7 @@
       </li>
      <% else %>
     <p class="mb-0 cart-btn rounded" id="cart-text"><%= render 'layouts/cart_text' %></p>
-       <li class="nav-item rounded <%= activeProvide(new_user_session_path)%>"><%= link_to "Log in", new_user_session_path, class:"nav-link" %></li>
+       <li class="nav-item rounded center <%= activeProvide(new_user_session_path)%>"><%= link_to "Log in", new_user_session_path, class:"nav-link" %></li>
    <% end %>
    </ul>
 </header>

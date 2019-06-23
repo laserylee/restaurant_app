@@ -1,13 +1,13 @@
-<% @array = allCategory(Item) %>
+<% @category = allCategory(Item) %>
 
 
 
   <div class="row">
 
-  <div class="col-md-2 d-sm-none d-md-block" style="background-color: #777777;">
+  <div class="col-md-2 d-none d-md-block" style="background-color: #777777;">
   <nav id ="navcustomer" class="navbar navbar-light  navbar-expand bg-light rounded sticky-top ml-md-2" style="top:55px;">
     <ul class="navbar-nav flex-column">
-      <% @array.each do |f| %>
+      <% @category.each do |f| %>
         <li class="nav-item rounded">
           <a class="nav-link" href="#<%= f %>"><%= f %></a>
         </li>
@@ -17,8 +17,8 @@
   </div>
 
 
-    <div class="col-md-10 col-s">
-    <% @array.each do |f| %>
+    <div class="col-md-10 col-sm-12">
+    <% @category.each do |f| %>
       <div class="headertitle" style="padding-top:100px;font-size:4em;" id="<%= f %>"><%= f %></div>
       <div class="jumbotron flex-column category-card">
         <div class="card-group flex-md-row flex-sm-column pb-md-3">
